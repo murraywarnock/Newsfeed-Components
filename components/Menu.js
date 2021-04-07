@@ -48,7 +48,8 @@ function menuMaker(array) {
   return menuDiv;
 };
 
-menuImage = document.querySelector(".menu-button");
+// menuImage = document.querySelector(".menu-button");
+menuImage = document.querySelector(".header");
 menuImage.appendChild(menuDiv);
 
 console.log(menuMaker(menuItems));
