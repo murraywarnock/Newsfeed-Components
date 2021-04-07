@@ -114,3 +114,63 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+// MSW code:
+
+function articleMaker(obj) {
+  // divArticles = document.querySelector(".articles");
+  const hArticle = document.createElement("div");
+  // hArticle.textContent = obj.firstParagraph;
+  hArticle.classList.add("article");
+
+  //  Create html structure with classes
+  let haTitle = hArticle.appendChild(document.createElement("h2"));
+  let haPDate = hArticle.appendChild(document.createElement("p"));
+  haPDate.classList.add("date");
+  let haP1 = hArticle.appendChild(document.createElement("p"));
+  let haP2 = hArticle.appendChild(document.createElement("p"));
+  let haP3 = hArticle.appendChild(document.createElement("p"));
+  let haSpan = hArticle.appendChild(document.createElement("span"));
+  haSpan.classList.add("expandButton");
+  // Not working - add button element to span
+  let haSpanButton = haSpan.appendChild(document.createElement("button"));
+
+// Add content from obj argument
+  haTitle.textContent = obj.title;
+  haPDate.textContent = obj.date;
+  haP1.textContent = obj.firstParagraph;
+  haP2.textContent = obj.secondParagraph;
+  haP3.textContent = obj.thirdParagraph;
+  haSpan.textContent = "+";
+
+  haSpan.addEventListener('click', (e) => {
+    hArticle.classList.toggle("article-open");
+    // console.log('clicked!');
+  })
+
+
+  return hArticle;
+}
+// const articlesDiv =
+
+console.log(articleMaker({
+  title: 'Lambda School Students: "We\'re the best!"',
+  date: 'Nov 5th, 2018',
+  firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
+      moff wicket tatooine luke.Solo wampa wampa calrissian yoda moff.Darth grievous darth gonk darth hutt.Darth baba skywalker
+      watto fett jango maul han.Mon ewok sidious sidious lando kenobi grievous gamorrean solo.Yoda wedge utapau darth calamari.
+      Hutt calamari darth jabba.Darth dooku amidala organa moff.Boba darth binks solo hutt skywalker dantooine skywalker.Qui - gonn
+      jar twi'lek jinn leia jango skywalker mon.`,
+
+  secondParagraph: `Grievous fett calamari anakin skywalker hutt.Alderaan darth kenobi darth r2- d2
+      windu mothma.Sidious darth calamari moff.Wampa mothma sith wedge solo mara.Darth gonk maul sith moff chewbacca palpatine
+      mace amidala.C - 3po solo skywalker anakin yoda leia.Maul wampa bespin watto jade ewok darth jabba.Lando dantooine moff
+      k - 3po dantooine luke.Fisto mandalore darth wedge c - 3p0 ahsoka.Secura moff palpatine fett.Anakin sith darth darth.Moff
+      solo leia ben ponda jade.Binks jango aayla skywalker skywalker cade.Mustafar darth ventress anakin watto.Yavin jawa sebulba
+      owen jinn tatooine sith organa.`,
+
+  thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
+      naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
+      han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
+      moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+}));
