@@ -93,6 +93,27 @@ const data = [
     firstParagraph: `This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
     secondParagraph: `This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
     thirdParagraph: `This is my article. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 2",
+    date: 'Jun 26, 1963',
+    firstParagraph: `This is my article2. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article2. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article2. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 3",
+    date: 'Feb 1, 1995',
+    firstParagraph: `This is my article3. This is the first paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article3. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article3. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 4",
+    date: 'Feb 28, 1962',
+    firstParagraph: `This is my article4. This is the first paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article3. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article3. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
   }
 ];
 
@@ -158,17 +179,16 @@ function articleMaker(obj) {
     // console.log('clicked!');
   })
 
-
+// Step 3
   return hArticle;
 }
-// const articlesDiv =
-
+// Steps 4 & 5
+// As in guided project, create an array of HTML article objects, populated with data from array "data"
 const articlesArray = data.map((obj) => {
-  // map returns an array
   // console.log(articleMaker(obj));
   return articleMaker(obj);
 });
-
+// Then plug each object from the array into the HTML class "articles"
 let divArticles = document.querySelector(".articles");
 articlesArray.forEach((article) => {
   divArticles.appendChild(article);
