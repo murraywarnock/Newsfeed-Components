@@ -86,6 +86,34 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "This is Murray's Article",
+    date: 'Jun 26, 1963',
+    firstParagraph: `This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 2",
+    date: 'Jun 26, 1963',
+    firstParagraph: `This is my article2. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article2. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article2. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 3",
+    date: 'Feb 1, 1995',
+    firstParagraph: `This is my article3. This is the first paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article3. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article3. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
+  },
+  {
+    title: "This is My Article 4",
+    date: 'Feb 28, 1962',
+    firstParagraph: `This is my article4. This is the first paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `,
+    secondParagraph: `This is my article3. This is my article. This is my article. This is my article. This is my article. This is my article. This is my second paragraph. This is my article. This is my article. `,
+    thirdParagraph: `This is my article3. This is my third paragraph. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. This is my article. `
   }
 ];
 
@@ -114,3 +142,54 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+// MSW code:
+
+function articleMaker(obj) {
+  const hArticle = document.createElement("div");
+  // hArticle.textContent = obj.firstParagraph;
+  hArticle.classList.add("article");
+
+  //  Create html structure with classes
+  let haTitle = hArticle.appendChild(document.createElement("h2"));
+  let haPDate = hArticle.appendChild(document.createElement("p"));
+  haPDate.classList.add("date");
+  let haP1 = hArticle.appendChild(document.createElement("p"));
+  let haP2 = hArticle.appendChild(document.createElement("p"));
+  let haP3 = hArticle.appendChild(document.createElement("p"));
+  let haSpan = hArticle.appendChild(document.createElement("span"));
+  haSpan.classList.add("expandButton");
+
+  // add button element to span
+  // let haSpanButton = haSpan.appendChild(document.createElement("button"));
+  // let haSpanButton = document.createElement("button");
+  // haSpan.appendChild(haSpanButton);
+
+// Add content from obj argument
+  haTitle.textContent = obj.title;
+  haPDate.textContent = obj.date;
+  haP1.textContent = obj.firstParagraph;
+  haP2.textContent = obj.secondParagraph;
+  haP3.textContent = obj.thirdParagraph;
+  haSpan.textContent = "+";
+
+  // Step 2: Event Listener
+  haSpan.addEventListener('click', (e) => {
+    hArticle.classList.toggle("article-open");
+    // console.log('clicked!');
+  })
+
+// Step 3
+  return hArticle;
+}
+// Steps 4 & 5
+// As in guided project, create an array of HTML article objects, populated with data from array "data"
+const articlesArray = data.map((obj) => {
+  // console.log(articleMaker(obj));
+  return articleMaker(obj);
+});
+// Then plug each object from the array into the HTML class "articles"
+let divArticles = document.querySelector(".articles");
+articlesArray.forEach((article) => {
+  divArticles.appendChild(article);
+});
